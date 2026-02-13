@@ -1,0 +1,228 @@
+<!DOCTYPE html>        
+<html lang="en">        
+<head>        
+    <meta charset="UTF-8">        
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">        
+    <title>For My Seegan Mama 💗</title>        
+    <style>        
+        :root {        
+            --pink: #ff4d6d;        
+            --soft-pink: #ffb3c1;        
+            --lavender: #c77dff;        
+        }        
+      
+        body {        
+            margin: 0;        
+            padding: 0;        
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;        
+            color: #590d22;        
+            overflow: hidden;        
+            display: flex;        
+            justify-content: center;        
+            align-items: center;        
+            height: 100vh;        
+            text-align: center;        
+      
+            background: linear-gradient(-45deg, #ffb3c1, #ffc2d1, #c77dff, #e0aaff);      
+            background-size: 400% 400%;      
+            animation: gradientMove 8s ease infinite;      
+        }        
+      
+        .page {        
+            display: none;        
+            width: 90%;        
+            max-width: 500px;        
+            animation: fadeIn 0.8s ease-in-out;        
+        }        
+      
+        .active { display: block; }        
+                
+        h1 { font-size: 2rem; margin-bottom: 20px; }        
+        .btn-container { position: relative; height: 100px; }        
+      
+        button {        
+            padding: 15px 30px;        
+            font-size: 1.2rem;        
+            border: none;        
+            border-radius: 50px;        
+            cursor: pointer;        
+            transition: 0.3s;        
+            margin: 10px;        
+        }        
+      
+        #yesBtn { background-color: var(--pink); color: white; }        
+      
+        #noBtn {         
+            background-color: #ccc;         
+            position: absolute;         
+            transition: all 0.2s ease;        
+        }        
+      
+        .mcq-btn {        
+            display: block;        
+            width: 100%;        
+            background: white;        
+            border: 2px solid var(--pink);        
+            margin: 10px 0;        
+            padding: 12px;        
+            border-radius: 10px;        
+        }        
+      
+        .mcq-btn:hover { background: var(--soft-pink); }        
+      
+        .letter-page {        
+            background: white;        
+            padding: 30px;        
+            border-radius: 20px;        
+            box-shadow: 0 0 20px rgba(255, 77, 109, 0.2);        
+            line-height: 1.6;        
+        }        
+      
+        .heart {        
+            position: absolute;        
+            font-size: 20px;        
+            user-select: none;        
+            z-index: -1;        
+            animation: float 4s linear infinite;        
+        }        
+      
+        @keyframes float {        
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }        
+            100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }        
+        }        
+      
+        @keyframes fadeIn {         
+            from { opacity: 0; transform: scale(0.9); }         
+            to { opacity: 1; transform: scale(1); }         
+        }        
+      
+        @keyframes gradientMove {      
+            0% { background-position: 0% 50%; }      
+            50% { background-position: 100% 50%; }      
+            100% { background-position: 0% 50%; }      
+        }      
+      
+    </style>        
+</head>        
+<body>        
+        
+    <audio id="bgMusic" loop>        
+        <source src="YOUR_MUSIC_URL" type="audio/mpeg">        
+    </audio>        
+        
+    <div id="page1" class="page active">        
+        <h1>Will you be my Valentine, baby? 😻</h1>        
+        <div class="btn-container">        
+            <button id="yesBtn" onclick="startExperience()">Yes 😻</button>        
+            <button id="noBtn" onmouseover="moveNo()">No 🙈</button>        
+        </div>        
+    </div>        
+
+    <div id="correctPage" class="page">
+        <h1>Aww... that's correct baby 💜✨</h1>
+    </div>
+        
+    <div id="page5" class="page">        
+        <h3>1. Who loves you the most in this world 🌍?</h3>        
+        <button class="mcq-btn" onclick="checkAnswer(true, 6)">My Girl obviously 🦋</button>        
+        <button class="mcq-btn" onclick="checkAnswer(false)">My Brother</button>        
+        <button class="mcq-btn" onclick="checkAnswer(false)">My Friends</button>        
+        <button class="mcq-btn" onclick="checkAnswer(false)">My Sister</button>        
+    </div>        
+        
+    <div id="page6" class="page">        
+        <h3>2. If I cry for no reason... What is the reason? 😔</h3>        
+        <button class="mcq-btn" onclick="checkAnswer(false)">Mood swing</button>        
+        <button class="mcq-btn" onclick="checkAnswer(false)">Overthinking</button>        
+        <button class="mcq-btn" onclick="checkAnswer(false)">Just want attention</button>        
+        <button class="mcq-btn" onclick="checkAnswer(true, 7)">Because you miss me too much 🥺</button>        
+    </div>        
+        
+    <div id="page7" class="page">        
+        <h3>3. If I say "I miss you"... you should?</h3>        
+        <button class="mcq-btn" onclick="checkAnswer(false)">Say same</button>        
+        <button class="mcq-btn" onclick="checkAnswer(false)">Call me</button>        
+        <button class="mcq-btn" onclick="checkAnswer(false)">Come meet me</button>        
+        <button class="mcq-btn" onclick="checkAnswer(true, 8)">Hug me tight immediately 🫂</button>        
+    </div>        
+        
+    <div id="page8" class="page">        
+        <h3>4. Will you be mine forever? 💗</h3>        
+        <button class="mcq-btn" onclick="checkAnswer(true, 9)">Yes baby</button>        
+        <button class="mcq-btn" onclick="checkAnswer(true, 9)">Of course</button>        
+        <button class="mcq-btn" onclick="checkAnswer(true, 9)">Always</button>        
+        <button class="mcq-btn" onclick="checkAnswer(true, 9)">There is no other option 😂</button>        
+    </div>        
+        
+    <div id="page9" class="page">        
+        <h2>Final Score 🏆</h2>        
+        <h1 id="scoreDisplay">4 / 4</h1>        
+        <p>You know me so well! 🥰</p>        
+        <button onclick="nextPage(10)">Read my Letter 💌</button>        
+    </div>        
+        
+    <!-- UPDATED LETTER PAGE -->
+    <div id="page10" class="page">        
+        <div class="letter-page">        
+            <h2>For My Beloved Seegan Mama 💗🫂✨</h2>        
+            <p>From the day you came into my life, everything became extra special… extra happy… and sometimes extra dramatic also 😜</p>  
+            <p>You are my peace, my laughter, and my biggest blessing all in one handsome package. I don’t know what magic you did, but my heart has permanently selected you — no delete option available!</p>  
+            <p>I promise to love you when you’re sweet, when you’re moody, when you're angry, and even when you act like you don’t need me 😅</p>  
+            <p><strong>Forever your jessy 💗</strong><br>  
+            Your crazy girl who loves you more than anything in the world 🌍✨</p>  
+        </div>        
+    </div>        
+        
+    <script>        
+        let score = 0;        
+        let nextAfterCorrect = 0;
+      
+        function startExperience() {        
+            document.getElementById('bgMusic').play();        
+            nextPage(5);        
+            setInterval(createHeart, 300);        
+        }        
+      
+        function nextPage(pageNumber) {        
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));        
+            document.getElementById('page' + pageNumber)?.classList.add('active');        
+        }        
+      
+        function moveNo() {        
+            const btn = document.getElementById('noBtn');        
+            const x = Math.random() * (window.innerWidth - 100);        
+            const y = Math.random() * (window.innerHeight - 50);        
+            btn.style.left = x + 'px';        
+            btn.style.top = y + 'px';        
+        }        
+      
+        function checkAnswer(isCorrect, nextPageNumber) {        
+            if(isCorrect) {        
+                score++;        
+                nextAfterCorrect = nextPageNumber;
+                showCorrectPage();
+            } else {
+                alert("Oops that's wrong baby 😔");
+            }
+        }
+
+        function showCorrectPage() {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById('correctPage').classList.add('active');
+            setTimeout(() => {
+                nextPage(nextAfterCorrect);
+            }, 1200);
+        }
+      
+        function createHeart() {        
+            const heart = document.createElement('div');        
+            heart.classList.add('heart');        
+            heart.innerHTML = Math.random() > 0.5 ? '💗' : '💜';        
+            heart.style.left = Math.random() * 100 + 'vw';        
+            heart.style.animationDuration = (Math.random() * 2 + 3) + 's';        
+            document.body.appendChild(heart);        
+            setTimeout(() => heart.remove(), 4000);        
+        }        
+    </script>        
+</body>        
+</html>
